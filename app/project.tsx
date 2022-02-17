@@ -13,7 +13,8 @@ function hasValidPostAttributes(attributes: any): attributes is ProjectMarkdownA
         attributes?.image &&
         attributes?.imageAlt &&
         attributes?.role &&
-        attributes?.roleSubtitle
+        attributes?.roleSubtitle &&
+        attributes?.type
     );
 }
 
@@ -28,6 +29,7 @@ export function getFeaturedProjects() {
             image: attributes.image,
             role: attributes.role,
             roleSubtitle: attributes.roleSubtitle,
+            type: attributes.type,
             featured: attributes.featured,
         };
     });
@@ -47,7 +49,30 @@ export function getProjectBySlug(slug: string) {
         image: attributes.image,
         role: attributes.role,
         roleSubtitle: attributes.roleSubtitle,
+        type: attributes.type,
         featured: attributes.featured,
         content: renderToString(<ContentComponent />),
     };
+}
+
+export function getAllProjectsSortedByType() {
+    const formattedProjects = projects.map(({ attributes, filename }) => {
+        invariant(hasValidPostAttributes(attributes), `Project ${filename} is missing attributes`);
+        return {
+            slug: filename.replace(/\.md$/, ""),
+            title: attributes.title,
+            subtitle: attributes.subtitle,
+            image: attributes.image,
+            role: attributes.role,
+            roleSubtitle: attributes.roleSubtitle,
+            type: attributes.type,
+            featured: attributes.featured,
+        };
+    });
+
+    const filmProjects = formattedProjects.filter(({ type }) => type === "film");
+    const televisionProjects = formattedProjects.filter(({ type }) => type === "television");
+    const commercialProjects = formattedProjects.filter(({ type }) => type === "commercial");
+
+    return { filmProjects, televisionProjects, commercialProjects };
 }

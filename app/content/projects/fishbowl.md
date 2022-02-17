@@ -5,6 +5,7 @@ image: https://res.cloudinary.com/djp5voqgy/image/upload/h_850,w_600/allakvb9grh
 imageAlt: Fishbowl poster
 role: Producer / UPM
 roleSubtitle: Feature Film
+type: film
 featured: true
 ---
 

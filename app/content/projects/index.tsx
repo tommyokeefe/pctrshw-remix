@@ -16,6 +16,7 @@ export type ProjectMarkdownAttributes = {
     role: string,
     roleSubtitle: string,
     featured: boolean,
+    type: "film" | "television" | "commercial"
 };
 
 export type ProjectContent = {

@@ -5,6 +5,7 @@ image: https://res.cloudinary.com/djp5voqgy/image/upload/h_850,w_600/vxd3poycf2e
 imageAlt: 'V/H/S 2: Haxan Segment Poster'
 role: Producer / UPM
 roleSubtitle: 'Feature short for VHS 2: Anthology'
+type: film
 featured: true
 ---
 

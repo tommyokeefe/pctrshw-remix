@@ -5,6 +5,7 @@ image: https://res.cloudinary.com/djp5voqgy/image/upload/h_850,w_600/rdpvypobaoy
 imageAlt: Strays Poster
 role: Producer / UPM
 roleSubtitle: Short Film
+type: film
 featured: true
 ---
 

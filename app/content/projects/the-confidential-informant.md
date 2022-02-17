@@ -5,6 +5,7 @@ image: https://res.cloudinary.com/djp5voqgy/image/upload/h_850,w_600/ktatl9ojweo
 imageAlt: The Confidential Informant Poster
 role: Producer / UPM
 roleSubtitle: Short Film
+type: film
 featured: true
 ---
 

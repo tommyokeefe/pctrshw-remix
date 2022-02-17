@@ -35,6 +35,7 @@ export default function MainMenu({ menuRef, isMenuOpen, toggleMenu }: MainMenuPr
                 to="/about/kyle-david-crosby"
                 className={({ isActive }) => isActive ? activeClassName : ''}
                 onClick={navLinkClickHandler}
+                prefetch="intent"
               >Kyle David Crosby</NavLink>
             </li>
             <li>
@@ -42,15 +43,17 @@ export default function MainMenu({ menuRef, isMenuOpen, toggleMenu }: MainMenuPr
                 to="/about/pictureshow"
                 className={({ isActive }) => isActive ? activeClassName : ''}
                 onClick={navLinkClickHandler}
+                prefetch="intent"
               >Pictureshow</NavLink>
             </li>
           </ul>
         </li>
         <li>
           <NavLink
-            to="/resume"
+            to="/our-work"
             className={({ isActive }) => isActive ? activeClassName : ''}
             onClick={navLinkClickHandler}
+            prefetch="intent"
           >Resume</NavLink>
         </li>
         <li>

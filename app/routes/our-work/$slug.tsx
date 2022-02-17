@@ -1,4 +1,4 @@
-import { useLoaderData, useTransition } from "remix";
+import { useLoaderData } from "remix";
 import type { LoaderFunction } from "remix";
 
 
