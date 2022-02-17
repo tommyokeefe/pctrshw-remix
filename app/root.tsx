@@ -1,3 +1,5 @@
+import React, { useState, useEffect, useRef } from "react";
+import type { MutableRefObject } from "react";
 import {
   Links,
   LiveReload,
@@ -19,10 +21,15 @@ export function links() {
 }
 
 export const meta: MetaFunction = () => {
-  return { title: "PICTURESHOW" };
+  return { title: "Pictureshow" };
 };
 
 export default function App() {
+  const [isMenuOpen, toggleMenu] = useState(false);
+  const ref = useRef<HTMLDivElement>();
+
+  clickOutsideMenuHandler(ref, () => toggleMenu(false));
+
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <head>
@@ -32,12 +39,12 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <div id="container">
-          <MainMenu />
+        <div id="container" className={isMenuOpen ? 'menu-open' : ''} >
+          <MainMenu menuRef={ref} isMenuOpen={isMenuOpen} />
           <div className="pusher">
             <div className="content-container">
               <div className="content-container--inner">
-                <Header logo={logo} />
+                <Header logo={logo} toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
                 <Outlet />
                 <Footer />
                 <ScrollRestoration />
@@ -49,5 +56,28 @@ export default function App() {
         {process.env.NODE_ENV === "development" && <LiveReload />}
       </body>
     </html>
+  );
+}
+
+const clickOutsideMenuHandler = (ref: MutableRefObject<HTMLDivElement | undefined>, handler: () => void) => {
+  useEffect(
+    () => {
+      const listener = (event: Event) => {
+        const target = event.target as Node
+
+        if (!ref.current || ref.current.contains(target)) {
+          return;
+        }
+
+        handler();
+      };
+      document.addEventListener("mousedown", listener);
+      document.addEventListener("touchstart", listener);
+      return () => {
+        document.removeEventListener("mousedown", listener);
+        document.removeEventListener("touchstart", listener);
+      };
+    },
+    [ref, handler]
   );
 }

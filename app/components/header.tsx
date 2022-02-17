@@ -1,14 +1,20 @@
-type Props = {
-  logo: string
+import type { Dispatch, SetStateAction } from "react";
+import { Link } from "remix";
+
+type HeaderProps = {
+  logo: string,
+  toggleMenu: Dispatch<SetStateAction<boolean>>,
+  isMenuOpen: boolean,
 }
 
-export default function Header({ logo }: Props) {
+export default function Header({ logo, toggleMenu, isMenuOpen }: HeaderProps) {
+  const onClickHandler = () => toggleMenu(!isMenuOpen);
   return (
     <header className="header">
-      <a href="/" className="header--logo-link">
+      <Link to="/" className="header--logo-link">
         <img src={logo} className="header--logo-image" />
-      </a>
-      <div className="header--nav-toggle">
+      </Link>
+      <div className="header--nav-toggle" onClick={onClickHandler} onTouchEnd={onClickHandler} >
         <span></span>
         <span></span>
         <span></span>

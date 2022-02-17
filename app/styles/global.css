@@ -357,7 +357,7 @@ body {
   font-feature-settings: "kern", "liga", "pnum";
   -webkit-font-smoothing: antialiased;
   font-family: "Montserrat"; 
-  overflow-y: scroll;
+  overflow: hidden;
   height: 100%;
 }
 
@@ -366,8 +366,7 @@ html,
 .pusher,
 .content-container {
   height: 100%;
-  /* has to be scroll, not auto */
-  -webkit-overflow-scrolling: touch; }
+ }
 
 .wrapper {
   min-height: 100%; }
@@ -580,6 +579,14 @@ html,
     color: #C79400; }
   .main-menu--links li ul li.inactive a {
     color: #4D4D4D; }
+
+  .submenu-hidden {
+    display: none;
+  }
+
+  .submenu {
+    display: block;
+  }
 
 .header {
   background-color: #666666;

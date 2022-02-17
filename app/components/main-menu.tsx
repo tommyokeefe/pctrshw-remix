@@ -1,24 +1,38 @@
-export default function MainMenu() {
+import { useState } from "react";
+import type { MouseEvent, MutableRefObject, LegacyRef, TouchEvent } from "react";
+import { Link } from "remix";
+
+type MainMenuProps = {
+  menuRef: MutableRefObject<HTMLDivElement | undefined>,
+  isMenuOpen: boolean,
+};
+
+export default function MainMenu({ menuRef, isMenuOpen }: MainMenuProps) {
+  const [isAboutOpen, toggleAbout] = useState(false);
+  const aboutClickHandler = (e: MouseEvent | TouchEvent) => {
+    e.preventDefault();
+    toggleAbout(!isAboutOpen)
+  };
   return (
-    <nav className="main-menu">
+    <nav className="main-menu" ref={isMenuOpen ? menuRef as LegacyRef<HTMLDivElement> : undefined}>
       <h1 className="main-menu--headline">Pictureshow Productions</h1>
       <ul className="main-menu--links">
         <li className="active">
-          <a href="/">Our Work</a>
+          <Link to="/">Our Work</Link>
         </li>
         <li className="">
-          <a className="toggle">About</a>
-          <ul className="submenu">
+          <a href="" className="toggle" onClick={aboutClickHandler} onTouchStart={aboutClickHandler}>About</a>
+          <ul className={isAboutOpen ? 'submenu' : 'submenu-hidden'}>
             <li className="inactive">
-              <a href="/about/kyle-david-crosby">Kyle David Crosby</a>
+              <Link to="/about/kyle-david-crosby">Kyle David Crosby</Link>
             </li>
             <li className="inactive">
-              <a href="/about/pictureshow">Pictureshow</a>
+              <Link to="/about/pictureshow">Pictureshow</Link>
             </li>
           </ul>
         </li>
         <li className="">
-          <a href="/resume">Resume</a>
+          <Link to="/resume">Resume</Link>
         </li>
         <li className="">
           <a href="mailto:kdc@pctrshw.com">Contact</a>
