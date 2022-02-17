@@ -13,7 +13,9 @@ function pageHasValidAttributes(attributes: any): attributes is AboutMarkdownAtt
 export function getAboutBySlug(slug: string) {
     const aboutPage = about.find(page => page.filename.replace(/\.md$/, "") === slug);
     if (!aboutPage) {
-        throw new Error("no matching about slug");
+        throw new Response(`/about/${slug}`, {
+            status: 404
+        });
     }
     const { attributes, filename, ContentComponent } = aboutPage;
     invariant(pageHasValidAttributes(attributes), `Page ${filename} is missing attributes.`);

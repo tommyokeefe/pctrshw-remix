@@ -387,7 +387,11 @@ html,
 .main-content {
   background-color: #EEEEEE;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden; 
+  min-height: 100vh;
+  padding-top: 80px;
+  margin-top: -80px;
+} 
   @media screen and (min-width: 1200px) {
     .main-content {
       max-width: 1200px;
@@ -407,7 +411,7 @@ html,
   font-style: normal;
   font-size: 40px;
   line-height: 40px;
-  font-weight: normal;
+  font-weight: 600;
   color: #C79400;
   margin: 20px 0 5px 0; }
   @media screen and (min-width: 768px) {
@@ -609,7 +613,7 @@ html,
 
 .header--title {
   font-family: "Montserrat";
-  font-weight: normal;
+  font-weight: 600;
   font-size: 24px;
   line-height: 24px;
   color: #F9F9F9;
@@ -708,6 +712,7 @@ html,
   left: 50%; }
 
 .our-work {
+  text-align: center;
   margin: 20px 10px; }
   @media screen and (min-width: 1024px) {
     .our-work {
@@ -718,6 +723,7 @@ html,
   font-size: 30px;
   line-height: 30px;
   margin: 5px 0;
+  text-align: left;
   color: #333333; }
   @media screen and (min-width: 768px) {
     .films h2, .television h2, .other h2 {
@@ -791,7 +797,7 @@ html,
 
 .project__title {
   text-align: center;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 18px;
   line-height: 18px;
   margin: 5px 0;
@@ -991,3 +997,27 @@ html,
   .footer p {
     margin: 0;
     padding: 0; }
+
+.error-content {
+  padding: 40px;
+}
+
+.error-content h1 {
+  font-size: 60px;
+  font-weight: 600;
+  color: darkred;
+  text-align: center;
+}
+
+.error-content p {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.error-content pre {
+  white-space: pre-wrap;
+  padding: 20px;
+  margin: 0;
+  background-color: #7777;
+  display: inline-block;
+}

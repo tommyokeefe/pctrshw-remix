@@ -23,8 +23,8 @@ export default function OurWork() {
     <>
       <Hero heroImage={banner} />
       <div className="our-work">
-        <h1 className="section-title">Resume</h1>
         <div className="about">
+          <h1 className="section-title">Resume</h1>
           <div className="about__body">
             <p>Below is a sampling&nbsp;of the projects that Kyle David Crosby has done over the course of his career. Roll over for title and brief description.</p>
           </div>

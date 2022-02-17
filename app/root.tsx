@@ -6,7 +6,8 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
+  useCatch,
 } from "remix";
 import type { MetaFunction } from "remix";
 
@@ -54,6 +55,84 @@ export default function App() {
           </div>
         </div>
         {process.env.NODE_ENV === "development" && <LiveReload />}
+      </body>
+    </html>
+  );
+}
+
+export function ErrorBoundary({ error }: any) {
+  console.error(error);
+  const [isMenuOpen, toggleMenu] = useState(false);
+  const ref = useRef<HTMLDivElement>();
+
+  clickOutsideMenuHandler(ref, () => toggleMenu(false));
+  return (
+    <html lang="en" suppressHydrationWarning={true}>
+      <head>
+        <title>Oops!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <div id="container" className={isMenuOpen ? 'menu-open' : ''} >
+          <MainMenu menuRef={ref} isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+          <div className="pusher">
+            <div className="content-container">
+              <div className="content-container--inner">
+                <Header logo={logo} toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
+                <section className="main-content">
+                  <h1>Something went wrong!</h1>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+export function CatchBoundary() {
+  const [isMenuOpen, toggleMenu] = useState(false);
+  const ref = useRef<HTMLDivElement>();
+
+  clickOutsideMenuHandler(ref, () => toggleMenu(false));
+  const caught = useCatch();
+  console.log(caught);
+  return (
+    <html lang="en" suppressHydrationWarning={true}>
+      <head>
+        <title>Oops!</title>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <div id="container" className={isMenuOpen ? 'menu-open' : ''} >
+          <MainMenu menuRef={ref} isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+          <div className="pusher">
+            <div className="content-container">
+              <div className="content-container--inner">
+                <Header logo={logo} toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
+                <section className="main-content">
+                  {caught.data ?
+                    (<div className="error-content">
+                      <h1>{caught.status} {caught.statusText}</h1>
+                      <p>Oops! Looks like we couldn't find what you were looking for. No content available for:</p>
+                      <pre>pctrshw.com{caught.data}</pre>
+                    </div>)
+                    :
+                    (<div className="error-content">
+                      <h1>{caught.status} {caught.statusText}</h1>
+                      <p>Oops! Looks like we couldn't find what you were looking for.</p>
+                    </div>)
+                  }
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Scripts />
       </body>
     </html>
   );

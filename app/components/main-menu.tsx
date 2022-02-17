@@ -10,11 +10,19 @@ type MainMenuProps = {
 
 export default function MainMenu({ menuRef, isMenuOpen, toggleMenu }: MainMenuProps) {
   const [isAboutOpen, toggleAbout] = useState(false);
+  const [isAboutActive, toggleAboutActive] = useState(false);
   const aboutClickHandler = (e: MouseEvent | TouchEvent) => {
     e.preventDefault();
     toggleAbout(!isAboutOpen)
   };
-  const navLinkClickHandler = () => toggleMenu(false);
+  const nonAboutNavClickHandler = () => {
+    toggleMenu(false);
+    toggleAboutActive(false);
+  }
+  const aboutNavClickHandler = () => {
+    toggleMenu(false);
+    toggleAboutActive(true);
+  };
   const activeClassName = "active";
   return (
     <nav className="main-menu" ref={isMenuOpen ? menuRef as LegacyRef<HTMLDivElement> : undefined}>
@@ -24,17 +32,17 @@ export default function MainMenu({ menuRef, isMenuOpen, toggleMenu }: MainMenuPr
           <NavLink
             to="/"
             className={({ isActive }) => isActive ? activeClassName : ''}
-            onClick={navLinkClickHandler}
+            onClick={nonAboutNavClickHandler}
           >Our Work</NavLink>
         </li>
         <li>
-          <a href="" className="toggle" onClick={aboutClickHandler} onTouchStart={aboutClickHandler}>About</a>
+          <a href="" className={`toggle ${isAboutActive && 'active'}`} onClick={aboutClickHandler} onTouchStart={aboutClickHandler}>About</a>
           <ul className={isAboutOpen ? 'submenu' : 'submenu-hidden'}>
             <li>
               <NavLink
                 to="/about/kyle-david-crosby"
                 className={({ isActive }) => isActive ? activeClassName : ''}
-                onClick={navLinkClickHandler}
+                onClick={aboutNavClickHandler}
                 prefetch="intent"
               >Kyle David Crosby</NavLink>
             </li>
@@ -42,7 +50,7 @@ export default function MainMenu({ menuRef, isMenuOpen, toggleMenu }: MainMenuPr
               <NavLink
                 to="/about/pictureshow"
                 className={({ isActive }) => isActive ? activeClassName : ''}
-                onClick={navLinkClickHandler}
+                onClick={aboutNavClickHandler}
                 prefetch="intent"
               >Pictureshow</NavLink>
             </li>
@@ -52,7 +60,7 @@ export default function MainMenu({ menuRef, isMenuOpen, toggleMenu }: MainMenuPr
           <NavLink
             to="/our-work"
             className={({ isActive }) => isActive ? activeClassName : ''}
-            onClick={navLinkClickHandler}
+            onClick={nonAboutNavClickHandler}
             prefetch="intent"
           >Resume</NavLink>
         </li>

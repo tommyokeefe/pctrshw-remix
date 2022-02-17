@@ -16,13 +16,12 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function aboutPage() {
     const { title, content } = useLoaderData<About>();
     return (
-        <>
+        < section className="main-content">
             <Hero heroImage={banner} />
             <div className="about">
                 <h1 className="section-title">{title}</h1>
                 {content && <div className="about__body" dangerouslySetInnerHTML={{ __html: content }} />}
             </div>
-
-        </>
+        </section>
     );
 }

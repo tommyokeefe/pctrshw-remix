@@ -38,7 +38,9 @@ export function getFeaturedProjects() {
 export function getProjectBySlug(slug: string) {
     const project = projects.find(project => project.filename.replace(/\.md$/, "") === slug);
     if (!project) {
-        throw new Error("no matching project slug");
+        throw new Response(`/our-work/${slug}`, {
+            status: 404
+        });
     }
     const { attributes, filename, ContentComponent } = project;
     invariant(hasValidPostAttributes(attributes), `Project ${filename} is missing attributes`);
