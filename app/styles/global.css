@@ -567,18 +567,17 @@ html,
     text-decoration: none;
     font-family: "Montserrat";
     font-size: 30px; }
-  .main-menu--links .active a {
+  .main-menu--links a.active {
     color: #C79400; }
   .main-menu--links li ul li {
     list-style: none; }
   .main-menu--links li ul li a {
     text-decoration: none;
     font-family: "Montserrat";
-    font-size: 24px; }
-  .main-menu--links li ul li.active a {
+    font-size: 24px;
+    color: #4D4D4D }
+  .main-menu--links li ul li a.active {
     color: #C79400; }
-  .main-menu--links li ul li.inactive a {
-    color: #4D4D4D; }
 
   .submenu-hidden {
     display: none;

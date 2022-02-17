@@ -15,7 +15,6 @@ export type ProjectMarkdownAttributes = {
     imageAlt: string,
     role: string,
     roleSubtitle: string,
-    link: string,
     featured: boolean,
 };
 

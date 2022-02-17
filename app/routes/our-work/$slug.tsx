@@ -1,6 +1,5 @@
 import { useLoaderData } from "remix";
 import type { LoaderFunction } from "remix";
-import type { ComponentType } from "react"
 
 
 import { getProjectBySlug } from "~/project";
@@ -10,8 +9,7 @@ export const loader: LoaderFunction = async ({ params }) => {
     return getProjectBySlug(params.slug || '');
 };
 
-export default function ProjectSlug() {
-
+export default function ProjectPage() {
     const { title, subtitle, image, imageAlt, role, roleSubtitle, content } = useLoaderData<Project>();
     return (
         <section className="main-content">
@@ -26,7 +24,7 @@ export default function ProjectSlug() {
                 <div className="our-work__details">
                     <h2 className="single-project-detail__role">{role}</h2>
                     <h3 className="single-project-detail__subtitle">{roleSubtitle}</h3>
-                    {content && (<div className="single-project-detail__content" dangerouslySetInnerHTML={{ __html: content }} />)}
+                    {content && <div className="single-project-detail__content" dangerouslySetInnerHTML={{ __html: content }} />}
                 </div>
             </div>
         </section>

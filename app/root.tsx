@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { MutableRefObject } from "react";
 import {
   Links,
@@ -40,7 +40,7 @@ export default function App() {
       </head>
       <body>
         <div id="container" className={isMenuOpen ? 'menu-open' : ''} >
-          <MainMenu menuRef={ref} isMenuOpen={isMenuOpen} />
+          <MainMenu menuRef={ref} isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
           <div className="pusher">
             <div className="content-container">
               <div className="content-container--inner">
@@ -63,8 +63,7 @@ const clickOutsideMenuHandler = (ref: MutableRefObject<HTMLDivElement | undefine
   useEffect(
     () => {
       const listener = (event: Event) => {
-        const target = event.target as Node
-
+        const target = event.target as Element
         if (!ref.current || ref.current.contains(target)) {
           return;
         }
