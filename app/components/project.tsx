@@ -20,7 +20,7 @@ export default function Project({ title, subtitle, image, imageAlt, role, roleSu
                         <h4 className="project__overlay--subtitle">{roleSubtitle}</h4>
                         <h3 className="project__overlay--title">{title}</h3>
                         <h4 className="project__overlay--subtitle">{subtitle}</h4>
-                        <Link className="project__overlay--link" to={`/our-work/${slug}`}>More Info</Link>
+                        <Link className="project__overlay--link" to={`/our-work/${slug}`} reloadDocument={true}>More Info</Link>
                     </div>
                 </div>
             </div>

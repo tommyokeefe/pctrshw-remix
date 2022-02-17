@@ -1,4 +1,4 @@
-import { useLoaderData } from "remix";
+import { useLoaderData, useTransition } from "remix";
 import type { LoaderFunction } from "remix";
 
 
@@ -12,7 +12,7 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function ProjectPage() {
     const { title, subtitle, image, imageAlt, role, roleSubtitle, content } = useLoaderData<Project>();
     return (
-        <section className="main-content">
+        <>
             <div className="our-work__single">
                 <h1 className="section-title">{title}</h1>
                 <h2 className="section-subtitle">{subtitle}</h2>
@@ -27,6 +27,6 @@ export default function ProjectPage() {
                     {content && <div className="single-project-detail__content" dangerouslySetInnerHTML={{ __html: content }} />}
                 </div>
             </div>
-        </section>
+        </>
     );
 }
