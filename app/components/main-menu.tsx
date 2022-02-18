@@ -26,7 +26,7 @@ export default function MainMenu({ menuRef, isMenuOpen, toggleMenu }: MainMenuPr
   const activeClassName = "active";
   return (
     <nav className="main-menu" ref={isMenuOpen ? menuRef as LegacyRef<HTMLDivElement> : undefined}>
-      <h1 className="main-menu--headline">Pictureshow Productions</h1>
+      <h1 className="main-menu--headline">Pctrshw <span>Productions</span></h1>
       <ul className="main-menu--links">
         <li>
           <NavLink
@@ -36,7 +36,7 @@ export default function MainMenu({ menuRef, isMenuOpen, toggleMenu }: MainMenuPr
           >Our Work</NavLink>
         </li>
         <li>
-          <a href="" className={`toggle ${isAboutActive && 'active'}`} onClick={aboutClickHandler} onTouchStart={aboutClickHandler}>About</a>
+          <a href="" className={`toggle ${isAboutActive && 'active'}`} onClick={aboutClickHandler} onTouchEnd={aboutClickHandler}>About</a>
           <ul className={isAboutOpen ? 'submenu' : 'submenu-hidden'}>
             <li>
               <NavLink
