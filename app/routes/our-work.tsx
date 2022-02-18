@@ -1,9 +1,9 @@
-import { Outlet } from "remix";
+import { Outlet } from 'remix';
 
 export default function OurWork() {
-    return (
-        <section className="main-content">
-            <Outlet />
-        </section>
-    );
-};
+  return (
+    <section className='main-content'>
+      <Outlet />
+    </section>
+  );
+}
