@@ -20,7 +20,6 @@ export default function Header({ logo, toggleMenu, isMenuOpen }: HeaderProps) {
       <div
         className='header--nav-toggle'
         onClick={onClickHandler}
-        onTouchEnd={onClickHandler}
       >
         <span></span>
         <span></span>
