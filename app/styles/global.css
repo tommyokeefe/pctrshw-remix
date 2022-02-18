@@ -778,22 +778,28 @@ html,
       line-height: 40px;
       box-shadow: 10px 10px #0892D0; } }
 
+.films, .television, .other, .films-container, .television-container, .other-container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto; }
   .films::after, .television::after, .other::after, .films-container::after, .television-container::after, .other-container::after {
     clear: both;
     content: "";
     display: table; }
 
+
 @media screen and (max-width: 599px) {
 .project {
+  margin-left: auto;
+  margin-right: auto;
   content: "";
   clear: both;
   display: table;}}
+
 @media screen and (min-width: 600px) and (max-width: 1023px) {
   .project {
     float: left;
-    display: block; }
-  .films::after, .television::after, .other::after, .films-container::after, .television-container::after, .other-container::after {
-    clear: both;;
+    display: block;
     margin-right: 2.35765%;
     width: 48.82117%; }
     .project:last-child {
