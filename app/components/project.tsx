@@ -13,6 +13,7 @@ export default function Project({
   slug,
 }: Project) {
   const [active, toggleActive] = useState(false);
+  const [isSwiping, toggleSwipping] = useState(false);
   return (
     <div className='project'>
       <h3 className='project__title'>{title}</h3>
@@ -20,7 +21,22 @@ export default function Project({
         className={`project__container ${active ? 'active' : ''}`}
         onMouseEnter={() => toggleActive(true)}
         onMouseLeave={() => toggleActive(false)}
-        onTouchEnd={() => toggleActive(!active)}
+        onTouchStart={() => {
+          if (isSwiping) {
+            toggleSwipping(false)
+          }
+        }}
+        onTouchMove={() => {
+          if (!isSwiping) {
+            toggleSwipping(true)
+          }
+        }}
+        onTouchEnd={() => {
+          if (!isSwiping) {
+            toggleActive(!active)
+          }
+          toggleSwipping(false);
+        }}
       >
         <img className='project__image' src={image} alt={imageAlt} />
         <div className='project__overlay'>
