@@ -56,7 +56,6 @@ export default function MainMenu({
             href=''
             className={`toggle ${isAboutActive && 'active'}`}
             onClick={aboutClickHandler}
-            onTouchStart={aboutClickHandler}
           >
             About
           </a>
