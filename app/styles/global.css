@@ -387,7 +387,6 @@ html,
 .main-content {
   background-color: #EEEEEE;
   position: relative;
-  overflow: hidden; 
   min-height: 100vh;
   padding-top: 80px;
   margin-top: -80px;
